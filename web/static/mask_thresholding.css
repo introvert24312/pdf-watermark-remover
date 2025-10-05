@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+h1 {
+    margin: 20px 0;
+    color: white;
+}
+
+.container {
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+#color-filtering-sliders-div {
+    display: none;
+}
+
+.new-buttons {
+    display: None;
+}
+
+.threshold-sliders label, .color-filtering-sliders label {
+    margin-top: 10px;
+}
+
+.canvas-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    background: white;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#progress-bar {
+    display: none;
+}
+
+#start_button {
+    display: none;
+}

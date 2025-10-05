@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mask Thresholding</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/mask_thresholding.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Mask Thresholding</h1>
+        <div class="row">
+            <div class="col-lg-3">
+                <div>
+                    <button id="done_button" class="btn btn-primary">Done</button>
+                </div>
+                <div class="threshold-sliders mb-4">
+                    <div id="threshold-sliders-div">
+                        <label for="th_min_slider">Threshold min:</label>
+                            <input type="range" id="th_min_slider" class="form-control" min="0" max="255" value="0" oninput="debouncedSendThresholdSliderValues('th_min_value', this.value)">
+                            <span id="th_min_value">0</span>
+                        <label for="th_max_slider">Threshold max:</label>
+                        <input type="range" id="th_max_slider" class="form-control" min="0" max="255" value="195" oninput="debouncedSendThresholdSliderValues('th_max_value', this.value)">
+                        <span id="th_max_value">195</span>
+                    </div>
+                </div>
+                <div class="color-filtering-sliders mb-4">
+                    <div id="color-filtering-sliders-div">
+                        <label for="r_min_slider">Red min:</label>
+                        <input type="range" id="r_min_slider" class="form-control" min="0" max="255" value="1" oninput="debouncedSendColorSliderValues('r_min_value', this.value)">
+                        <span id="r_min_value">0</span>
+                        <label for="r_max_slider">Red max:</label>
+                        <input type="range" id="r_max_slider" class="form-control" min="0" max="255" value="195" oninput="debouncedSendColorSliderValues('r_max_value', this.value)">
+                        <span id="r_max_value">195</span>
+
+                        <label for="g_min_slider">Green min:</label>
+                        <input type="range" id="g_min_slider" class="form-control" min="0" max="255" value="1" oninput="debouncedSendColorSliderValues('g_min_value', this.value)">
+                        <span id="g_min_value">0</span>
+                        <label for="g_max_slider">Green max:</label>
+                        <input type="range" id="g_max_slider" class="form-control" min="0" max="255" value="195" oninput="debouncedSendColorSliderValues('g_max_value', this.value)">
+                        <span id="g_max_value">195</span>
+
+                        <label for="b_min_slider">Blue min:</label>
+                        <input type="range" id="b_min_slider" class="form-control" min="0" max="255" value="1" oninput="debouncedSendColorSliderValues('b_min_value', this.value)">
+                        <span id="b_min_value">0</span>
+                        <label for="b_max_slider">Blue max:</label>
+                        <input type="range" id="b_max_slider" class="form-control" min="0" max="255" value="195" oninput="debouncedSendColorSliderValues('b_max_value', this.value)">
+                        <span id="b_max_value">195</span>
+
+                        <label for="sharpen_slider">Sharpening:</label>
+                        <input type="range" id="sharpen_slider" class="form-control" min="0" max="10" value="1" oninput="debouncedSendColorSliderValues('sharpen_value', this.value)">
+                        <span id="sharpen_value">0</span>
+
+                        <label for="mode_select">Mode:</label>
+                        <select id="mode_select" class="form-control">
+                            <option id="option_zero" value="0">Most common color</option>
+                            <option id="option_one" value="1">Inpaint</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div id="buttons" class="buttons mb-4 d-flex flex-row align-items-center justify-content-center">
+                    <button id="erode_button" class="btn btn-secondary new-buttons">Erode</button>
+                    <button id="dilate_button" class="btn btn-secondary new-buttons">Dilate</button>
+                    <button id="reset_button" class="btn btn-secondary new-buttons">Reset</button>
+                </div>
+                <progress id="progress-bar" value="0" max="100"></progress>
+                <button id="start_button" class="btn btn-success">Start</button>
+            </div>
+            <div class="col-lg-9 justify-content-center align-items-center">
+                <div class="canvas-container">
+                    <img id="mask" src="/get_threshold_mask" alt="Mask Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script src="/static/mask_thresholding.js"></script>
+</body>
+</html>

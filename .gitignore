@@ -1,0 +1,7 @@
+__pycache__
+modules/__pycache__/
+web/uploaded.pdf
+venv/
+*.pyc
+.DS_Store
+output.pdf
